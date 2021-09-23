@@ -1,32 +1,23 @@
-# 实时阴影介绍
+# UnityPCSS
+Nvidia's PCSS soft shadow algorithm implemented in Unity3D.
 
-## 阴影系统
+# Description
+"PCSS" or "Percentage Closer Soft Shadows" is a shadow sampling algorithm invented by Nvidia in 2005 ([Original Whitepaper](http://developer.download.nvidia.com/shaderlibrary/docs/shadow_PCSS.pdf)). The intent is to simulate a more realistic falloff where the shadows get progressively softer the further the receiver is from the caster.
 
-### Shadow Map
+This effect is easy to spot in real life, such as when looking at tree shadows:
+![alt text](http://www.pictorem.com/collection/900_455535.jpg "Photo of a real tree shadow on snow")
 
-### PCF
-
-### PCSS
-
-## 案例分析
-
-源工程地址：https://github.com/TheMasonX/UnityPCSS
+I thought this photo was really cool, so I did a quick recreation as a test:
+![alt text](https://pbs.twimg.com/media/C9R9LQ3V0AAXqBo.jpg "I think it looks fairly close for like 5 minutes of work haha")
 
 
+# Current Limitations
+Currently only works with "Directional" light sources, as it's primarily an override of the "Screen Space Shadows" shader in the graphics settings, but I'm looking into the possibility of directly overriding the actual "UnityShadowLibrary.cginc" to affect "Spot" and "Point" lights if possible.
 
-## 参考
+# Version Compatibility
+Currently working in **2019**, though the shadows themselves should still work with **5.5, 5.6, 2017, and 2018** (no modifications necessary, it automatically detects and adapts to any version), but as this is now a **Unity 2019.2 project**, the materials in the demo scene do not import correctly in earlier versions. There are only 3 or so materials that need their albedo/metallic/specular textures assigned from the nearby "Textures" folder, so it's not that bad, but if anybody has any ideas to fix this, please let me know! :)
 
-[金柚子大佬的博客](https://www.yuque.com/yikejinyouzi/aau4tk/totr2w#y7rab)
+# Future Development
+This asset and any improvements will remain free (both as in beer and speech), but if you wish to support me spending extra time on this, you can donate to me through [PayPal](paypal.me/TheMasonX). NOTE: Please do not feel pressured to donate it's just an option if anyone wishes to support me spending more time on this, and less on my game, which I can't even use it for.
 
-[Unity Shadow Mapping Demo](https://www.youtube.com/watch?v=3AdLu0PHOnE)
-
-[Unity Shader - Custom SSSM(Screen Space Shadow Map) 自定义屏幕空间阴影图](https://blog.csdn.net/linjf520/article/details/105456097)
-
-[Unity Shader - Custom DirectionalLight ShadowMap 自定义方向光的ShadowMap](https://blog.csdn.net/linjf520/article/details/105401157)
-
-[Unity实时阴影实现——Shadow Mapping](https://zhuanlan.zhihu.com/p/45653702)
-
-[游戏里的动态阴影-ShadowMap实现原理](https://www.cnblogs.com/lijiajia/p/7231605.html)
-
-[Unity Shader - 获取BuiltIn深度纹理和自定义深度纹理的数据](https://blog.csdn.net/linjf520/article/details/104723859)
-
+I obviously didn't do this to make money though; instead, I'd prefer support in the form of you guys contributing back any fixes/improvements, so that we can all benefit :) I made it Open Source rather than just a free asset because I believe that if we work together, we can create something truly amazing. Thanks for the interest, and I hope you guys get some good use out of it! Let me know if you have any issues or ideas, and I'll respond to pull requests ASAP.
